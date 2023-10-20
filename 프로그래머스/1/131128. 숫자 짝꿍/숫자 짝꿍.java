@@ -24,13 +24,9 @@ class Solution {
             }
         }
 
-        if(answer.toString().equals("")) answer = new StringBuilder("-1");
-        else if(Pattern.matches(reg, answer.toString())) answer = new StringBuilder("0");
-        else{
-            char[] char_arr = answer.toString().toCharArray();
-            Arrays.sort(char_arr);
-            answer = new StringBuilder(new String(char_arr)).reverse();
-        }
+        if(answer.toString().equals("")) return "-1";
+        else if(Pattern.matches(reg, answer.toString())) return "0";
+
         return answer.toString();
     }
 

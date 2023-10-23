@@ -14,14 +14,14 @@ class Solution {
     }
 
     public static String deadline(String privacy, int term_month){
-        int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         String deadline = "";
         int day = findDay(privacy)-1;
         int month = findMonth(privacy) + term_month;
+        if(day==0){
+            month--;
+            day = 28;
+        } 
         int year = findYear(privacy);
-        
-        if(day==0) month--;
-        
         if(month > 12){
             year += month/12;
             month -= 12*(month/12);
@@ -31,11 +31,6 @@ class Solution {
             }
         }
         
-        if(day==0){
-            day = days[month-1];
-            if(month==2 && year % 4 ==0) day = 29;
-        }
-
         deadline = String.format("%d.%02d.%02d", year, month, day);
 
         return deadline;

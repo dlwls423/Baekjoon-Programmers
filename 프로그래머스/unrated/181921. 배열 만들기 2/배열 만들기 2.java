@@ -8,11 +8,8 @@ class Solution {
             String str = Integer.toString(i);
             if(Pattern.matches("[0,5]+", str)) list.add(i);
         }
-        if(list.size()==0){
-            int[] answer = new int[1];
-            answer[0] = -1;
-            return answer;
-        }
+        if(list.size()==0) return new int[] {-1};
+  
         int[] answer = new int[list.size()];
         for(int i=0;i<list.size();i++) answer[i] = list.get(i);
         return answer;

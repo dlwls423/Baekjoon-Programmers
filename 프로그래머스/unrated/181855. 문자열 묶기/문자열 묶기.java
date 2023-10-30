@@ -1,17 +1,12 @@
-import java.util.HashMap;
-import java.util.Map;
-
 class Solution {
     public int solution(String[] strArr) {
-        Map<Integer, Integer> map = new HashMap<>();
-        
+        int[] numArr = new int[31];
         for(String str : strArr){
-            map.put(str.length(), map.getOrDefault(str.length(), 0)+1);
+            numArr[str.length()]++;
         }
-        
         int max = -1;
-        for(int key : map.keySet()){
-            if(max < map.get(key)) max = map.get(key);
+        for(int num : numArr){
+            if(max < num) max = num;
         }
 
         return max;

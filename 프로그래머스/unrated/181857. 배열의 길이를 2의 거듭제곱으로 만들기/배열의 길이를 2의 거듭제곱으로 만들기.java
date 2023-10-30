@@ -1,19 +1,13 @@
+import java.util.*;
+
 class Solution {
     public int[] solution(int[] arr) {
-        int len = arr.length;
-        int fixedLen = 0;
+        int len = 1;
         
-        for(int i=1;i<1024;i*=2){
-            if(len >= i && len < i*2){
-                if(len == i) fixedLen = i;
-                else fixedLen = i*2;
-                break;
-            }
+        while(len < arr.length){
+            len *= 2;
         }
         
-        int[] answer = new int[fixedLen];
-        for(int i=0;i<len;i++) answer[i] = arr[i];
-        for(int i=len;i<fixedLen;i++) answer[i] = 0;
-        return answer;
+        return Arrays.copyOf(arr, len);
     }
 }

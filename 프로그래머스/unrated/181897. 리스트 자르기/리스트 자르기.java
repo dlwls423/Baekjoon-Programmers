@@ -3,6 +3,7 @@ class Solution {
         int a = slicer[0];
         int b = slicer[1];
         int c = slicer[2];
+        
         switch (n){
             case 1:
                 return makeAnswer(0, b, 1, num_list);
@@ -20,12 +21,15 @@ class Solution {
         int len = end - start + 1;
         if(len%gap == 0) len /= gap;
         else len = len/gap +1;
+        
         int[] answer = new int[len];
         int listIdx = start;
+        
         for(int i=start; i<=end && listIdx<=end; i++){
             answer[i-start] = num_list[listIdx];
             listIdx += gap;
         }
+        
         return answer;
     }
 }

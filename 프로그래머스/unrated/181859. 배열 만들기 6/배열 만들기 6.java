@@ -13,9 +13,6 @@ class Solution {
         }
         
         if(stk.isEmpty()) return new int[] {-1};
-        int[] answer = new int[stk.size()];
-        for(int i=0;i<stk.size();i++) answer[i] = stk.get(i);
-
-        return answer;
+        return stk.stream().mapToInt(i -> i).toArray();
     }
 }

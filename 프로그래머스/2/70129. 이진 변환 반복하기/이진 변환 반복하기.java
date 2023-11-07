@@ -11,20 +11,9 @@ class Solution {
             ones = s.length();
             zeros += beforeLen - ones;
             num++;
-            s = convertToBinaryString(ones);
+            s = Integer.toBinaryString(ones);
         }
 
         return new int[] {num, zeros};
-    }
-    
-    public static String convertToBinaryString(int len){
-        StringBuilder binary = new StringBuilder();
-        int a;
-        while(len > 0){
-            a = len % 2;
-            len /= 2;
-            binary.append(String.valueOf(a));
-        }
-        return binary.reverse().toString();
     }
 }

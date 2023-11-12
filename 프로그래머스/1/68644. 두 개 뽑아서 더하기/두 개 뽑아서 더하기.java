@@ -1,22 +1,19 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 class Solution {
     public int[] solution(int[] numbers) {
         int len = numbers.length;
         Arrays.sort(numbers);
-        List<Integer> list = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
 
         for(int i=0;i<len;i++){
             if(i>0&&numbers[i]==numbers[i-1]) i++;
             for(int j=i+1;j<len;j++){
                 int sum = numbers[i] + numbers[j];
-                if(list.contains(sum));
-                else list.add(sum);
+                set.add(sum);
             }
         }
 
-        return list.stream().sorted().mapToInt(i->i).toArray();
+        return set.stream().sorted().mapToInt(i->i).toArray();
     }
 }

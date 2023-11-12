@@ -1,20 +1,15 @@
 class Solution {
     public int solution(int n, int m, int[] section) {
-        int answer = 0;
-        int pre = section[0];
-        int idx = 0;
-        int len = section.length;
+        int answer = 1;
+        int startPoint = section[0];
         
-        while(pre <= section[len-1]){
-            pre += m;
-            answer++;
-            for(;idx<len;idx++){
-                if(pre<=section[idx]){
-                    pre = section[idx];
-                    break;
-                }
+        for(int i=0;i<section.length;i++){
+            if(startPoint+m-1 < section[i]){
+                startPoint = section[i];
+                answer++;
             }
         }
+        
         return answer;
     }
 }

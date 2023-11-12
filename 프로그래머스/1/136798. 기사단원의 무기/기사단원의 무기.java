@@ -11,6 +11,7 @@ class Solution {
         int divisorNum = 0;
         for(int i=1;i<Math.sqrt(n);i++){
             if(n%i==0) divisorNum += 2;
+            if(divisorNum > l) return p;
         }
         
         if(Math.sqrt(n) % 1.0 == 0) divisorNum++;

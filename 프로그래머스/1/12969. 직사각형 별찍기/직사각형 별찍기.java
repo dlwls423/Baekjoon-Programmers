@@ -5,8 +5,7 @@ class Solution {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-        StringBuilder starLine = new StringBuilder();
-        starLine.append("*".repeat(a));
+        StringBuilder starLine = new StringBuilder("*".repeat(a));
 
         for(int i=0;i<b;i++){
             System.out.println(starLine);

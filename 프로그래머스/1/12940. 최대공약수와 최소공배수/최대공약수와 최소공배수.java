@@ -1,12 +1,15 @@
 class Solution {
-    public int[] solution(int n, int m) {
-        int min = (n > m) ? m : n;
-        int a = 0;
-        int b = 0;
-        for(int i=1;i<=min;i++){
-            if(n%i==0 && m%i==0) a=i;
-        }
-        b = a * (n/a) * (m/a);
-        return new int[] {a, b};
+    public int[] solution(int a, int b) {
+        int[] answer = new int[2];
+
+          answer[0] = gcd(a,b);
+        answer[1] = (a*b)/answer[0];
+        return answer;
     }
+
+   public static int gcd(int p, int q)
+   {
+    if (q == 0) return p;
+    return gcd(q, p%q);
+   }
 }

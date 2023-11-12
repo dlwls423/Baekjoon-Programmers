@@ -1,10 +1,9 @@
 class Solution {
     public String solution(String phone_number) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         int len = phone_number.length();
-        for(int i=0;i<len-4;i++) answer += "*";
-        String four = phone_number.substring(len-4);
-        answer = answer.concat(four);
-        return answer;
+        answer.append("*".repeat(Math.max(0, len - 4)));
+        String endFour = phone_number.substring(len-4);
+        return answer.append(endFour).toString();
     }
 }

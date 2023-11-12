@@ -1,10 +1,8 @@
 class Solution {
     public String solution(int n) {
-        String answer = "";
-        for(int i=0;i<n;i++){
-            if(i%2==0) answer += "수";
-            else answer += "박";
-        }
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        answer.append("수박".repeat(n/2));
+        if(n%2==1) answer.append("수");
+        return answer.toString();
     }
 }

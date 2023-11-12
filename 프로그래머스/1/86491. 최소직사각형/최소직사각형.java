@@ -1,13 +1,11 @@
 class Solution {
     public int solution(int[][] sizes) {
-        int a = 0;
-        int b = 0;
+        int height = 0;
+        int width = 0;
         for(int i=0;i<sizes.length;i++){
-            int m = sizes[i][0] > sizes[i][1] ? sizes[i][0] : sizes[i][1]; 
-            int n = sizes[i][0] < sizes[i][1] ? sizes[i][0] : sizes[i][1]; 
-            if(a<m) a = m;
-            if(b<n) b = n;
+            height = Math.max(height, Math.max(sizes[i][0], sizes[i][1]));
+            width = Math.max(width, Math.min(sizes[i][0], sizes[i][1]));
         }
-        return a*b;
+        return height*width;
     }
 }

@@ -6,7 +6,7 @@ class Solution {
         Arrays.sort(numbers);
         Set<Integer> set = new HashSet<>();
 
-        for(int i=0;i<len;i++){
+        for(int i=0;i<len-1;i++){
             if(i>0&&numbers[i]==numbers[i-1]) i++;
             for(int j=i+1;j<len;j++){
                 int sum = numbers[i] + numbers[j];

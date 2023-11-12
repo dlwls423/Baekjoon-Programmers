@@ -1,17 +1,16 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
 class Solution {
     public String[] solution(String[] strings, int n) {
-        int len = strings.length;
-        for(int i=0;i<len;i++){
-            for(int j=0;j<len-1;j++){
-                char c = strings[j].charAt(n);
-                char d = strings[j+1].charAt(n);
-                if(c > d || (c==d && strings[j].compareTo(strings[j+1]) > 0)){
-                    String temp = strings[j];
-                    strings[j] = strings[j+1];
-                    strings[j+1] = temp;
-                }
+        Arrays.sort(strings, new Comparator<String>(){
+            @Override
+            public int compare(String s1, String s2){
+                int a = s1.charAt(n) - s2.charAt(n);
+                if(a==0) return s1.compareTo(s2);
+                else return a;
             }
-        }
+        });
         
         return strings;
     }

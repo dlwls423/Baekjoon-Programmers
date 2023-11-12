@@ -5,11 +5,11 @@ class Solution {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
         int b = sc.nextInt();
-        
+        StringBuilder starLine = new StringBuilder();
+        starLine.append("*".repeat(a));
+
         for(int i=0;i<b;i++){
-            for(int j=0;j<a;j++) 
-                System.out.printf("*");
-            System.out.print("\n");
+            System.out.println(starLine);
         }
     }
 }

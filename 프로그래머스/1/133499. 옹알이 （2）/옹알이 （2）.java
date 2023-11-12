@@ -11,7 +11,6 @@ class Solution {
                 if(babbling[i].contains(words[j])){
                     if(babbling[i].contains(words[j]+words[j])) break;
                     babbling[i] = babbling[i].replaceAll(words[j], "-");
-                    //j--;
                 }
             }
             if(Pattern.matches(reg, babbling[i])) answer++;

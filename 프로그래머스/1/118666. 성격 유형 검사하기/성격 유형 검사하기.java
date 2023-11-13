@@ -8,6 +8,7 @@ class Solution {
         for(int i=0;i< survey.length;i++){
             setIndicator(survey[i], choices[i], indicator);
         }
+        
         if(indicator.get("R")>=indicator.get("T")) answer += "R";
         else answer += "T";
         if(indicator.get("C")>=indicator.get("F")) answer += "C";
@@ -16,7 +17,6 @@ class Solution {
         else answer += "M";
         if(indicator.get("A")>=indicator.get("N")) answer += "A";
         else answer += "N";
-
 
         return answer;
     }

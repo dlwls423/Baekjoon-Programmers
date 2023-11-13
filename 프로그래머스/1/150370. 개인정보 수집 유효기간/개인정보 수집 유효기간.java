@@ -20,17 +20,17 @@ class Solution {
         if(day==0){
             month--;
             day = 28;
-        } 
+        }
         int year = findYear(privacy);
         if(month > 12){
             year += month/12;
-            month -= 12*(month/12);
+            month = month%12;
             if(month == 0){
                 year--;
                 month = 12;
             }
         }
-        
+
         deadline = String.format("%d.%02d.%02d", year, month, day);
 
         return deadline;
@@ -48,16 +48,16 @@ class Solution {
     public static int findMonth(String str){
         return Integer.parseInt(str.substring(5, 7));
     }
-    
+
     public static int findDay(String str){
         return Integer.parseInt(str.substring(8, 10));
     }
-    
+
     public static int findTerm(String str, String[] terms){
-        String termkind = str.substring(11, 12);
+        String termKind = str.substring(11, 12);
         int term = 0;
         for (String s : terms) {
-            if (s.contains(termkind)) {
+            if (s.contains(termKind)) {
                 term = Integer.parseInt(s.substring(2));
             }
         }

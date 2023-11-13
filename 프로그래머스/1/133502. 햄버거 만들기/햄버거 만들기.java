@@ -3,31 +3,22 @@ import java.util.Stack;
 class Solution {
     public int solution(int[] ingredient) {
         int answer = 0;
-        Stack<Integer> burger = new Stack<>();
-        Stack<Integer> check = new Stack<>();
+        int[] burger = new int[ingredient.length];
+        int p = 0;
         for(int ingre : ingredient){
-            if(ingre==1){
-                int i;
-                for(i=3;i>0&&!burger.empty();i--){
-                    if(burger.peek()==i){
-                        check.push(burger.pop());
-                    }
-                    else break;
+            burger[p++] = ingre;
+            if(p>=4&&burger[p-1]==1){
+                int j;
+                for(j=2;j<=4;j++){
+                    if(!(burger[p-j] == 5-j)) break;
                 }
-                if(i==0){
+                if(j==5){
                     answer++;
-                    check.clear();
-                }
-                else{
-                    while(!check.empty()){
-                        burger.push(check.pop());
-                    }
-                    burger.push(ingre);
+                    p -= 4;
                 }
             }
-            else burger.push(ingre);
         }
-        
+
         return answer;
     }
 }

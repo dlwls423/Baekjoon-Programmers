@@ -12,14 +12,17 @@ class Solution {
             if(wallpaper[i].contains("#")){
                 if(lux==-1) lux = i;
                 rdx = i;
+                
                 int firstFile = wallpaper[i].indexOf("#");
                 if(luy==-1) luy = firstFile;
                 else if(luy > firstFile) luy = firstFile;
+                
                 int lastFile = wallpaper[i].lastIndexOf("#");
                 if(rdy==-1) rdy = lastFile;
                 else if(rdy < lastFile) rdy = lastFile;
             }
         }
+        
         answer[0] = lux;
         answer[1] = luy;
         answer[2] = rdx+1;

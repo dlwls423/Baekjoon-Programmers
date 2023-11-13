@@ -1,8 +1,10 @@
 class Solution {
     public String solution(String s, String skip, int index) {
         StringBuilder answer = new StringBuilder();
+        
         int[] alpha = new int[26];
         for(int i=0;i<skip.length();i++) alpha[skip.charAt(i)-'a']++;
+        
         for(int i=0;i<s.length();i++){
             char c = s.charAt(i);
             int j=c-'a';
@@ -13,6 +15,7 @@ class Solution {
             }
             answer.append((char) (j + 'a'));
         }
+        
         return answer.toString();
     }
 }

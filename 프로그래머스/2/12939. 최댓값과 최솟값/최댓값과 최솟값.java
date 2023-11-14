@@ -5,15 +5,14 @@ import java.util.ArrayList;
 class Solution {
     public String solution(String s) {
         String[] str = s.split(" ");
-        List<Integer> list = new ArrayList<>();
-        for(String numStr : str){
-            list.add(Integer.parseInt(numStr));
+        int len = str.length;
+        int[] intArr = new int[len];
+        for(int i = 0; i<len; i++){
+            intArr[i] = Integer.parseInt(str[i]);
         }
-
-        int[] arr = list.stream().mapToInt(i->i).toArray();
-        Arrays.sort(arr);
-        String min = Integer.toString(arr[0]);
-        String max = Integer.toString(arr[arr.length-1]);
+        Arrays.sort(intArr);
+        String min = Integer.toString(intArr[0]);
+        String max = Integer.toString(intArr[len-1]);
         return min + " " + max;
     }
 }

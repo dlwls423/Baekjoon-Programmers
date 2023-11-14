@@ -3,7 +3,7 @@ class Solution {
         String direction = "WENS";
         int[] answer = new int[2];
 
-        for(int i=0;i< park.length;i++){
+        for(int i=0;i< park.length;i++){ //시작 위치 찾기
             int idx = park[i].indexOf("S");
             if(idx!=-1){
                 answer[0] = i;

@@ -2,7 +2,7 @@
 SELECT 
     ANIMAL_ID, 
     NAME, 
-    LEFT(DATETIME, 10)
+    DATE_FORMAT(DATETIME, '%Y-%m-%d')
 FROM 
     ANIMAL_INS
 ORDER BY 

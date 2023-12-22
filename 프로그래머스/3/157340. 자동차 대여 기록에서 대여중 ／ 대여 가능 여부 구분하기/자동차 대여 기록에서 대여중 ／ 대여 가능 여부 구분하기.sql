@@ -1,0 +1,25 @@
+-- 코드를 입력하세요
+WITH a AS (
+    SELECT 
+        DISTINCT CAR_ID
+    FROM 
+        CAR_RENTAL_COMPANY_RENTAL_HISTORY c1 
+    WHERE
+        START_DATE <= '2022-10-16'
+        AND
+        END_DATE >= '2022-10-16'
+)
+
+SELECT 
+    DISTINCT c.CAR_ID,
+    CASE
+        WHEN a.CAR_ID IS NULL THEN '대여 가능'
+        ELSE '대여중'
+    END AS AVAILABILITY
+FROM
+    CAR_RENTAL_COMPANY_RENTAL_HISTORY c
+    LEFT OUTER JOIN
+    a
+    ON c.CAR_ID = a.CAR_ID
+ORDER BY
+    c.CAR_ID DESC

@@ -1,0 +1,30 @@
+-- 코드를 입력하세요
+WITH s AS (
+    SELECT
+        BOOK_ID,
+        SUM(SALES) AS SALES
+    FROM
+        BOOK_SALES
+    WHERE
+        LEFT(SALES_DATE,7) = '2022-01' 
+    GROUP BY
+        BOOK_ID
+)
+
+SELECT
+    a.AUTHOR_ID,
+    AUTHOR_NAME,
+    CATEGORY,
+    SUM(SALES * PRICE) AS TOTAL_SALES
+FROM
+    BOOK b
+    JOIN AUTHOR a
+    ON b.AUTHOR_ID = a.AUTHOR_ID
+    JOIN s
+    ON b.BOOK_ID = s.BOOK_ID
+GROUP BY
+    a.AUTHOR_ID,
+    CATEGORY
+ORDER BY
+    a.AUTHOR_ID,
+    CATEGORY DESC

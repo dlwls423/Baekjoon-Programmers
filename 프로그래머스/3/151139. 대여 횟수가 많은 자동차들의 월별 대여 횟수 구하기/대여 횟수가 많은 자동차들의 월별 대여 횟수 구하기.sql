@@ -1,4 +1,16 @@
--- 코드를 입력하세요
+WITH TB AS (
+    SELECT
+        CAR_ID
+    FROM
+        CAR_RENTAL_COMPANY_RENTAL_HISTORY
+    WHERE
+        MONTH(START_DATE) IN (8, 9, 10)
+    GROUP BY
+        CAR_ID
+    HAVING
+        COUNT(HISTORY_ID) >= 5
+)
+
 SELECT
     MONTH(START_DATE) AS MONTH,
     CAR_ID,
@@ -8,18 +20,7 @@ FROM
 WHERE
     MONTH(START_DATE) IN (8, 9, 10)
     AND
-    CAR_ID IN (
-        SELECT
-            CAR_ID
-        FROM
-            CAR_RENTAL_COMPANY_RENTAL_HISTORY
-        WHERE
-            MONTH(START_DATE) IN (8, 9, 10)
-        GROUP BY
-            CAR_ID
-        HAVING
-            COUNT(HISTORY_ID) >= 5
-    )
+    CAR_ID IN (SELECT * FROM TB)
 GROUP BY
     MONTH,
     CAR_ID

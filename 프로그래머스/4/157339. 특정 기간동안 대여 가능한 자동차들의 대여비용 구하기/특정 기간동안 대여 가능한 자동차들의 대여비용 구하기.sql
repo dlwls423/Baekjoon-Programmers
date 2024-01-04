@@ -41,14 +41,14 @@ WHERE
             CAR_ID
         FROM 
             t2
-    ) AND
-    CAST(DAILY_FEE * 0.01 * (100 -  DISCOUNT_RATE) * 30 AS UNSIGNED) >= 500000
+    )
+HAVING
+    FEE >= 500000
     AND
-    CAST(DAILY_FEE * 0.01 * (100 -  DISCOUNT_RATE) * 30 AS UNSIGNED) < 2000000
+    FEE < 2000000
 ORDER BY
     FEE DESC,
     CAR_TYPE,
     CAR_ID DESC
-
     
     

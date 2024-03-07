@@ -7,6 +7,7 @@ public class Main {
         int value;
         boolean isTarget = false;
     }
+
     static int stoi(String s) {
         return Integer.parseInt(s);
     }
@@ -53,11 +54,12 @@ public class Main {
     }
 
     public static boolean checkImportance() {
-        Queue<Element> copied = new LinkedList<>(queue);
-        int a = copied.poll().value;
-
-        while(!copied.isEmpty()) {
-            if(a < copied.poll().value){
+        int first = -1;
+        for(Element e : queue) {
+            if (first == -1) {
+                first = e.value;
+            }
+            else if (first < e.value) {
                 return false;
             }
         }

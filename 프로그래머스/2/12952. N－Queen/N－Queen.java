@@ -17,6 +17,7 @@ class Solution {
         }
         for (int j = 0; j < N; j++) {
             if(isPossible(queen, j)) {
+                board[queen][j] = 1;
                 nQueen(queen+1);
                 board[queen][j] = 0;
             }
@@ -47,7 +48,6 @@ class Solution {
             if(board[i+k][j-k] == 1) return false;
             k++;
         }
-        board[i][j] = 1;
         return true;
     }
 }

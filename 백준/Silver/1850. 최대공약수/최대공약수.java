@@ -21,7 +21,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < c; i++) {
-            sb.append("1");
+            sb.append(1);
         }
         System.out.println(sb);
     }

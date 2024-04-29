@@ -8,7 +8,7 @@ public class Main {
 
     static int N;
     static int[] arr;
-    static Map<Integer, Integer> map = new HashMap<>();
+    static int[] dp = new int[1001];
     static int maxLen;
 
     public static void main(String[] args) throws IOException {
@@ -23,18 +23,15 @@ public class Main {
         }
 
         maxLen = 1;
-        map.put(arr[0], 1);
+        dp[arr[0]] = 1;
         for (int i = 1; i < N; i++) {
-            int max = 1;
+            if(dp[arr[i]] == 0) dp[arr[i]] = 1;
             for (int j = i-1; j >= 0; j--) {
-                if(arr[j] > arr[i]) continue;
-                int len;
-                if(arr[j] == arr[i]) len = map.get(arr[j]);
-                else len = map.get(arr[j]) + 1;
-                if(len > max) max = len;
+                if(arr[j] < arr[i]) {
+                    dp[arr[i]] = Math.max(dp[arr[j]] + 1, dp[arr[i]]);
+                }
             }
-            if(max > maxLen) maxLen = max;
-            map.put(arr[i], max);
+            if(dp[arr[i]] > maxLen) maxLen = dp[arr[i]];
         }
 
         System.out.println(maxLen);

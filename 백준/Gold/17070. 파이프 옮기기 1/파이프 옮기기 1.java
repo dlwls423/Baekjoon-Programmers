@@ -24,7 +24,7 @@ public class Main {
             }
         }
 
-        Pipe pipe = new Pipe(new int[] {0, 1}, Shape.ROW);
+        Pipe pipe = new Pipe(0, 1, Shape.ROW);
 
         dfs(pipe);
 
@@ -32,24 +32,27 @@ public class Main {
     }
 
     public static void dfs(Pipe pipe) {
-        if(pipe.right[0] == N-1 && pipe.right[1] == N-1) {
+        if(pipe.rightRow == N-1 && pipe.rightCol == N-1) {
             way++;
             return;
         }
 
         // 가로로 이동
         if(pipe.shape == Shape.ROW || pipe.shape == Shape.DIAGONAL) {
-            if(pipe.right[1]+1 < N && room[pipe.right[0]][pipe.right[1]+1] == 0) dfs(new Pipe(new int[] {pipe.right[0], pipe.right[1]+1}, Shape.ROW));
+            if(pipe.rightCol+1 < N && room[pipe.rightRow][pipe.rightCol+1] == 0) dfs(new Pipe(pipe.rightRow, pipe.rightCol+1, Shape.ROW));
         }
 
         // 세로로 이동
         if(pipe.shape == Shape.COL || pipe.shape == Shape.DIAGONAL) {
-            if(pipe.right[0]+1 < N && room[pipe.right[0]+1][pipe.right[1]] == 0) dfs(new Pipe(new int[] {pipe.right[0]+1, pipe.right[1]}, Shape.COL));
+            if(pipe.rightRow+1 < N && room[pipe.rightRow+1][pipe.rightCol] == 0) dfs(new Pipe(pipe.rightRow+1, pipe.rightCol, Shape.COL));
         }
 
         // 대각선으로 이동
-        if(pipe.right[0]+1 < N && pipe.right[1]+1 < N && room[pipe.right[0]+1][pipe.right[1]] == 0 && room[pipe.right[0]][pipe.right[1]+1] == 0 && room[pipe.right[0]+1][pipe.right[1]+1] == 0) {
-            dfs(new Pipe(new int[] {pipe.right[0]+1, pipe.right[1]+1}, Shape.DIAGONAL));
+        if(pipe.rightRow+1 < N && pipe.rightCol+1 < N
+                && room[pipe.rightRow+1][pipe.rightCol] == 0
+                && room[pipe.rightRow][pipe.rightCol+1] == 0
+                && room[pipe.rightRow+1][pipe.rightCol+1] == 0) {
+            dfs(new Pipe(pipe.rightRow+1, pipe.rightCol+1, Shape.DIAGONAL));
         }
     }
 
@@ -58,11 +61,13 @@ public class Main {
     }
 
     public static class Pipe {
-        int[] right;
+        int rightRow;
+        int rightCol;
         Shape shape;
 
-        public Pipe(int[] right, Shape shape) {
-            this.right = right;
+        public Pipe(int rightRow, int rightCol, Shape shape) {
+            this.rightRow = rightRow;
+            this.rightCol = rightCol;
             this.shape = shape;
         }
     }

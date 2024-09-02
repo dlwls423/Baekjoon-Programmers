@@ -50,14 +50,17 @@ public class Main {
         }
 
         int result = 0;
+        int link = 0;
         while(!pq.isEmpty()) {
             Edge edge = pq.poll();
 
-            int a = edge.a;
-            int b = edge.b;
-            if(findParent(a) != findParent(b)) {
-                union(a, b);
+            int rootA = findParent(edge.a);
+            int rootB = findParent(edge.b);
+            if(rootA != rootB) {
+                union(rootA, rootB);
                 result += edge.w;
+                link++;
+                if(link == V-1) break;
             }
         }
 
@@ -70,14 +73,11 @@ public class Main {
     }
 
     public static void union(int a, int b) {
-        int rootA = findParent(a);
-        int rootB = findParent(b);
-        
-        if(rootA < rootB) {
-            parent[rootB] = rootA;
+        if(a < b) {
+            parent[b] = a;
         }
         else {
-            parent[rootA] = rootB;
+            parent[a] = b;
         }
     }
 }

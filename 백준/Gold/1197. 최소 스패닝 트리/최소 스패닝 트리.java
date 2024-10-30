@@ -69,7 +69,7 @@ public class Main {
 
     public static int findParent(int n) {
         if(parent[n] == n) return n;
-        return findParent(parent[n]);
+        return parent[n] = findParent(parent[n]);
     }
 
     public static void union(int a, int b) {

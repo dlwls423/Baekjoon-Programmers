@@ -58,6 +58,7 @@ public class Main {
         queue.add(new Position(0,0,0));
         while(!queue.isEmpty()) {
             Position now = queue.poll();
+            if(now.x == 500 && now.y == 500) break;
             for (int i = 0; i < 4; i++) {
                 int nx = now.x + dx[i];
                 int ny = now.y + dy[i];

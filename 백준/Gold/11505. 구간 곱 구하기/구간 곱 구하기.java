@@ -22,13 +22,13 @@ public class Main {
                     * init(arr, node*2+1, (start+end)/2+1, end)) % MOD;
         }
 
-        public void update(int node, int start, int end, int idx, long original, long num) {
+        public void update(int node, int start, int end, int idx, long num) {
             if(idx < start || idx > end) return;
             if(start == end) tree[node] = num;
             else {
                 int mid = (start + end) / 2;
-                update(node * 2, start, mid, idx, original, num);
-                update(node * 2 + 1, mid + 1, end, idx, original, num);
+                update(node * 2, start, mid, idx, num);
+                update(node * 2 + 1, mid + 1, end, idx, num);
                 tree[node] = tree[node * 2] * tree[node * 2 + 1] % MOD;
             }
         }
@@ -70,7 +70,7 @@ public class Main {
             if(a == 1) {
                 int b = Integer.parseInt(st.nextToken());
                 long c = Long.parseLong(st.nextToken());
-                segmentTree.update(1, 0, N-1, b-1, arr[b-1], c);
+                segmentTree.update(1, 0, N-1, b-1, c);
             }
             else {
                 int b = Integer.parseInt(st.nextToken());

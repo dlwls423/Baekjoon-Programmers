@@ -48,10 +48,10 @@ public class Main {
             }
         });
 
-        int rank = 1;
+        int rank = 0;
         int equal = 1;
-        for (int i = 1; i < N; i++) {
-            if(countries[i-1].same(countries[i])) {
+        for (int i = 0; i < N; i++) {
+            if(i > 0 && countries[i-1].same(countries[i])) {
                 equal++;
             }
             else {

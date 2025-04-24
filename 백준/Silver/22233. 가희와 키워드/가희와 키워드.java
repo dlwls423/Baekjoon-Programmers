@@ -23,17 +23,12 @@ public class Main {
             words.add(keyword);
         }
 
-        Set<String> blogs = new HashSet<>();
-        int common = 0;
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             for(String w : st.nextToken().split(",")) {
-                if(!blogs.contains(w) && words.contains(w)) {
-                    common++;
-                    blogs.add(w);
-                }
+                words.remove(w);
             }
-            System.out.println(words.size() - common);
+            System.out.println(words.size());
         }
     }
 }
